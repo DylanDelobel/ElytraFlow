@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "elytraflow",
+  "version": "${version}",
+  "name": "ElytraFlow",
+  "description": "Automatically swaps your elytra back to your best chestplate when you land.",
+  "authors": ["Sovex66"],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/elytraflow",
+    "issues": "https://github.com/DylanDelobel/ElytraFlow/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.elytraflow.ElytraFlowClient"]
+  },
+  "mixins": ["elytraflow.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "fabric-api": "*",
+    "minecraft": "~26.1.2",
+    "java": ">=21"
+  }
+}
