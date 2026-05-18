@@ -1,0 +1,26 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+license = "MIT"
+
+[[mods]]
+modId = "elytraflow"
+version = "${version}"
+displayName = "ElytraFlow"
+description = "Automatically swaps your elytra back to your best chestplate when you land."
+
+[[dependencies.elytraflow]]
+modId = "neoforge"
+type = "required"
+versionRange = "[26.1.2.0,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.elytraflow]]
+modId = "minecraft"
+type = "required"
+versionRange = "[26.1.2,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[mixins]]
+config = "elytraflow.mixins.json"

@@ -1,6 +1,6 @@
 package com.elytraflow.mixin;
 
-import com.elytraflow.ElytraFlowClient;
+import com.elytraflow.ElytraFlowState;
 import com.elytraflow.SwapLogic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -21,7 +21,7 @@ public abstract class LocalPlayerMixin {
                  target = "Lnet/minecraft/client/player/LocalPlayer;tryToStartFallFlying()Z",
                  shift = At.Shift.AFTER))
     private void elytraflow$autoSwap(CallbackInfo ci) {
-        if (!ElytraFlowClient.enabled) return;
+        if (!ElytraFlowState.enabled) return;
         LocalPlayer self = (LocalPlayer)(Object)this;
         if (self.onGround() || self.isFallFlying() || self.isInWater()
                 || self.hasEffect(MobEffects.LEVITATION)) return;

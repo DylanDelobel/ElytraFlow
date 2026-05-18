@@ -10,15 +10,16 @@
     "issues": "https://github.com/DylanDelobel/ElytraFlow/issues"
   },
   "license": "MIT",
+  "icon": "assets/elytraflow/icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": ["com.elytraflow.ElytraFlowClient"]
+    "client": ["com.elytraflow.fabric.ElytraFlowFabric"]
   },
   "mixins": ["elytraflow.mixins.json"],
   "depends": {
-    "fabricloader": ">=0.18.0",
+    "fabricloader": ">=0.18.6",
     "fabric-api": "*",
-    "minecraft": "~26.1.2",
+    "minecraft": "~26.1",
     "java": ">=21"
   }
 }

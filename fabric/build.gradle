@@ -1,0 +1,38 @@
+plugins {
+    id 'fabric-loom' version '1.15-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = "${project.mod_version}-${project.minecraft_version}"
+group = project.maven_group
+
+base {
+    archivesName = "${project.archives_base_name}-fabric"
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    implementation project(':common')
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+processResources {
+    inputs.property 'version', project.mod_version
+    filesMatching('fabric.mod.json') {
+        expand version: project.mod_version
+    }
+}
+
+jar {
+    from project(':common').sourceSets.main.output
+    from("${rootProject.projectDir}/LICENSE") {
+        rename { "${it}_${project.archivesBaseName}" }
+    }
+}
