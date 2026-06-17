@@ -1,28 +1,42 @@
-# ElytraFlow
+# ElytraFlow 🪂
 
-A lightweight client-side Fabric mod for Minecraft 26.1.2.
+**Stop interrupting your flight to swap armor.**
 
-## What it does
+ElytraFlow automatically re-equips your best chestplate the moment you land, so you can focus on exploring, not your inventory.
 
-When you land while wearing an elytra, ElytraFlow automatically re-equips your best chestplate from your inventory — no manual swapping needed.
+## You know this situation
 
-It scans your entire inventory (hotbar, main, offhand) and picks the best available chestplate. Items with Curse of Binding are always skipped.
+You're flying across the map with your elytra. You land, you're exposed, and you start digging through your hotbar to put your chestplate back on.
 
-## Keybind
+Whether you're:
+- 🏔️ Gliding between mountain peaks and landing mid-combat
+- 🌍 Exploring for hours and touching down frequently for resources
+- 🏹 Playing on a PvP server where every second counts
+- 🌙 Landing at night and immediately getting attacked
 
-A toggle keybind is available under **Options → Controls → ElytraFlow** (unbound by default). Press it to enable or disable the mod. A message will appear on your screen confirming the current state.
+...ElytraFlow handles the swap for you, instantly and automatically.
 
-## Requirements
+## How it works
 
-- Minecraft 26.1.2
-- Fabric Loader 0.18.6+
-- Fabric API 0.145.4+26.1.2
+The moment your feet touch the ground while wearing an elytra, ElytraFlow scans your inventory and equips the best chestplate it finds. No clicks, no fumbling, no delay.
+
+- Searches your entire inventory (hotbar, main, offhand)
+- Always picks the highest-tier armor available
+- Skips items with **Curse of Binding** so you never get stuck
+- Does nothing if you don't have a chestplate to swap to
+
+## Toggle keybind
+
+You can turn the mod on or off at any time with a keybind under **Options > Controls > ElytraFlow** (unbound by default). A quick on-screen message confirms the state.
 
 ## Installation
 
-Drop `elytraflow-1.0.0-26.1.2.jar` into your `mods` folder.
+Drop the `.jar` into your `mods` folder. That's it.
+
+Works with **Fabric** and **NeoForge**, client-side only, compatible with any server.
 
 ## Notes
 
-- Client-side only — works on any server.
-- No config file, no ModMenu integration in v1.
+- 🔒 No data collected, no network requests
+- ⚙️ No config needed, it just works
+- 🌐 Works on any server
