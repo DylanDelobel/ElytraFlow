@@ -43,7 +43,7 @@ public class ElytraFlowNeoForge{
     private void registerKeys(RegisterKeyMappingsEvent event){
         toggleKey =new KeyMapping(
                 "key.elytraflow.toggle",
-                InputConstants.Type.KEYSYM,
+                InputConstants.Type.KEYBOARD,
                 InputConstants.UNKNOWN.getValue(),
                 CATEGORY
         );

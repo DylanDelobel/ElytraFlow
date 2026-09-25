@@ -31,7 +31,7 @@ public class ElytraFlowFabric implements ClientModInitializer{
         // unbound by default, too many mods fighting over keys already
         toggleKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.elytraflow.toggle",
-                InputConstants.Type.KEYSYM,
+                InputConstants.Type.KEYBOARD,
                 InputConstants.UNKNOWN.getValue(),
                 CATEGORY
         ));
