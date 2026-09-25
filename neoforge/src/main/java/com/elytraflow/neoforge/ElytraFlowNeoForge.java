@@ -8,33 +8,40 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+
+
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+
+
 import net.neoforged.neoforge.common.NeoForge;
 
-@Mod(value = "elytraflow", dist = Dist.CLIENT)
-public class ElytraFlowNeoForge {
+@Mod(value= "elytraflow", dist =Dist.CLIENT)
+public class ElytraFlowNeoForge{
 
     private static final KeyMapping.Category CATEGORY =
-            KeyMapping.Category.register(Identifier.fromNamespaceAndPath("elytraflow", "elytraflow"));
+            KeyMapping.Category.register(Identifier.fromNamespaceAndPath("elytraflow","elytraflow"));
 
     private static KeyMapping toggleKey;
-    private static boolean previousOnGround = true;
+    private static boolean wasOnGround =true;
 
-    public ElytraFlowNeoForge(IEventBus modEventBus, ModContainer modContainer) {
-        modEventBus.addListener(this::onRegisterKeyMappings);
-        NeoForge.EVENT_BUS.register(this);
+    public ElytraFlowNeoForge(IEventBus modBus, ModContainer container) {
+
+
+        modBus.addListener(this::registerKeys);
+        NeoForge.EVENT_BUS.register(this); // for the tick handler below
     }
 
-    private void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
-        toggleKey = new KeyMapping(
+    private void registerKeys(RegisterKeyMappingsEvent event){
+        toggleKey =new KeyMapping(
                 "key.elytraflow.toggle",
                 InputConstants.Type.KEYSYM,
                 InputConstants.UNKNOWN.getValue(),
@@ -43,12 +50,15 @@ public class ElytraFlowNeoForge {
         event.register(toggleKey);
     }
 
+    //same logic as the fabric tick callback
     @SubscribeEvent
     public void onClientTick(ClientTickEvent.Post event) {
-        var client = Minecraft.getInstance();
-        LocalPlayer player = client.player;
+
+        var client=Minecraft.getInstance();
+        LocalPlayer player=client.player;
         if (player == null) return;
 
+        //null check bc ticks can fire before key registration on neo
         while (toggleKey != null && toggleKey.consumeClick()) {
             ElytraFlowState.enabled = !ElytraFlowState.enabled;
             player.sendOverlayMessage(
@@ -56,19 +66,17 @@ public class ElytraFlowNeoForge {
             );
         }
 
-        if (!ElytraFlowState.enabled) {
-            previousOnGround = true;
+        if (!ElytraFlowState.enabled){
+            wasOnGround = true;
             return;
         }
 
         boolean onGround = player.onGround();
-        boolean inWater = player.isInWater();
-        var chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
-
-        if (onGround && !inWater && !previousOnGround && chestStack.has(DataComponents.GLIDER)) {
-            SwapLogic.tryWearChestplate(client);
+        if(onGround && !player.isInWater() && !wasOnGround
+                && player.getItemBySlot(EquipmentSlot.CHEST).has(DataComponents.GLIDER)) {
+            SwapLogic.tryWearChestplate(client);// landed, put the chestplate back on
         }
 
-        previousOnGround = onGround;
+        wasOnGround = onGround;
     }
 }
