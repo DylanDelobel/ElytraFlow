@@ -1,42 +1,41 @@
-# ElytraFlow 🪂
+# ElytraFlow
 
-**Stop interrupting your flight to swap armor.**
+ElytraFlow automatically equips a chestplate when you land while wearing an elytra.
 
-ElytraFlow automatically re-equips your best chestplate the moment you land, so you can focus on exploring, not your inventory.
-
-## You know this situation
-
-You're flying across the map with your elytra. You land, you're exposed, and you start digging through your hotbar to put your chestplate back on.
-
-Whether you're:
-- 🏔️ Gliding between mountain peaks and landing mid-combat
-- 🌍 Exploring for hours and touching down frequently for resources
-- 🏹 Playing on a PvP server where every second counts
-- 🌙 Landing at night and immediately getting attacked
-
-...ElytraFlow handles the swap for you, instantly and automatically.
+It saves you from having to open your inventory and swap your armor manually after every flight.
 
 ## How it works
 
-The moment your feet touch the ground while wearing an elytra, ElytraFlow scans your inventory and equips the best chestplate it finds. No clicks, no fumbling, no delay.
+When you touch the ground with an elytra equipped, ElytraFlow looks through your inventory for a chestplate and equips the best one available.
 
-- Searches your entire inventory (hotbar, main, offhand)
-- Always picks the highest-tier armor available
-- Skips items with **Curse of Binding** so you never get stuck
-- Does nothing if you don't have a chestplate to swap to
+The mod checks your hotbar, main inventory and offhand.
+
+If multiple chestplates are available, it picks the highest-tier one.
+
+Chestplates with **Curse of Binding** are ignored.
+
+If no chestplate is available, nothing happens.
 
 ## Toggle keybind
 
-You can turn the mod on or off at any time with a keybind under **Options > Controls > ElytraFlow** (unbound by default). A quick on-screen message confirms the state.
+ElytraFlow can be enabled or disabled at any time with a keybind.
+
+You can find it under **Options → Controls → ElytraFlow**.
+
+The keybind is unbound by default, so you can assign whichever key you prefer.
+
+A small on-screen message lets you know when the mod has been enabled or disabled.
 
 ## Installation
 
-Drop the `.jar` into your `mods` folder. That's it.
+Download the `.jar` and put it in your `mods` folder.
 
-Works with **Fabric** and **NeoForge**, client-side only, compatible with any server.
+ElytraFlow supports **Fabric and NeoForge** and is entirely client-side.
+
+You can use it on a server without requiring the server or other players to install the mod.
 
 ## Notes
 
-- 🔒 No data collected, no network requests
-- ⚙️ No config needed, it just works
-- 🌐 Works on any server
+- No configuration required
+- No data collection or network requests
+- Works on multiplayer servers
