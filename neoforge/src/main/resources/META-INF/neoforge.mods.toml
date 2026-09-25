@@ -6,6 +6,7 @@ license = "MIT"
 modId = "elytraflow"
 version = "${version}"
 displayName = "ElytraFlow"
+logoFile = "assets/elytraflow/icon.png"
 description = "Automatically swaps your elytra back to your best chestplate when you land."
 
 [[dependencies.elytraflow]]
